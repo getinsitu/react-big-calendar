@@ -77,15 +77,5 @@ export function segsOverlap(seg, otherSegs) {
 }
 
 export function sortEvents(eventA, eventB, accessors, localizer) {
-  const evtA = {
-    start: accessors.start(eventA),
-    end: accessors.end(eventA),
-    allDay: accessors.allDay(eventA),
-  }
-  const evtB = {
-    start: accessors.start(eventB),
-    end: accessors.end(eventB),
-    allDay: accessors.allDay(eventB),
-  }
-  return localizer.sortEvents({ evtA, evtB })
+  return 1
 }
