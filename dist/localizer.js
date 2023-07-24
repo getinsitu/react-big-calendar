@@ -82,39 +82,16 @@ function continuesAfter(start, end, last) {
 }
 
 // These two are used by eventLevels
-function sortEvents(_ref) {
-  var _ref$evtA = _ref.evtA,
-    aStart = _ref$evtA.start,
-    aEnd = _ref$evtA.end,
-    aAllDay = _ref$evtA.allDay,
-    _ref$evtB = _ref.evtB,
-    bStart = _ref$evtB.start,
-    bEnd = _ref$evtB.end,
-    bAllDay = _ref$evtB.allDay
-  var startSort =
-    +(0, _dates.startOf)(aStart, 'day') - +(0, _dates.startOf)(bStart, 'day')
-  var durA = (0, _dates.diff)(aStart, (0, _dates.ceil)(aEnd, 'day'), 'day')
-  var durB = (0, _dates.diff)(bStart, (0, _dates.ceil)(bEnd, 'day'), 'day')
-  return (
-    startSort ||
-    // sort by start Day first
-    Math.max(durB, 1) - Math.max(durA, 1) ||
-    // events spanning multiple days go first
-    !!bAllDay - !!aAllDay ||
-    // then allDay single day events
-    +aStart - +bStart ||
-    // then sort by start time
-    +aEnd - +bEnd // then sort by end time
-  )
+function sortEvents() {
+  return 1
 }
-
-function inEventRange(_ref2) {
-  var _ref2$event = _ref2.event,
-    start = _ref2$event.start,
-    end = _ref2$event.end,
-    _ref2$range = _ref2.range,
-    rangeStart = _ref2$range.start,
-    rangeEnd = _ref2$range.end
+function inEventRange(_ref) {
+  var _ref$event = _ref.event,
+    start = _ref$event.start,
+    end = _ref$event.end,
+    _ref$range = _ref.range,
+    rangeStart = _ref$range.start,
+    rangeEnd = _ref$range.end
   var eStart = (0, _dates.startOf)(start, 'day')
   var startsBeforeEnd = (0, _dates.lte)(eStart, rangeEnd, 'day')
   // when the event is zero duration we need to handle a bit differently

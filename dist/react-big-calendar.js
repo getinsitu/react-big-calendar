@@ -3160,7 +3160,6 @@
       })()
     }
   })(react_development)
-
   ;(function (module) {
     {
       module.exports = react_development
@@ -5505,38 +5504,16 @@
   }
 
   // These two are used by eventLevels
-  function sortEvents$1(_ref) {
-    var _ref$evtA = _ref.evtA,
-      aStart = _ref$evtA.start,
-      aEnd = _ref$evtA.end,
-      aAllDay = _ref$evtA.allDay,
-      _ref$evtB = _ref.evtB,
-      bStart = _ref$evtB.start,
-      bEnd = _ref$evtB.end,
-      bAllDay = _ref$evtB.allDay
-    var startSort = +startOf(aStart, 'day') - +startOf(bStart, 'day')
-    var durA = diff(aStart, ceil(aEnd, 'day'), 'day')
-    var durB = diff(bStart, ceil(bEnd, 'day'), 'day')
-    return (
-      startSort ||
-      // sort by start Day first
-      Math.max(durB, 1) - Math.max(durA, 1) ||
-      // events spanning multiple days go first
-      !!bAllDay - !!aAllDay ||
-      // then allDay single day events
-      +aStart - +bStart ||
-      // then sort by start time
-      +aEnd - +bEnd // then sort by end time
-    )
+  function sortEvents$1() {
+    return 1
   }
-
-  function inEventRange(_ref2) {
-    var _ref2$event = _ref2.event,
-      start = _ref2$event.start,
-      end = _ref2$event.end,
-      _ref2$range = _ref2.range,
-      rangeStart = _ref2$range.start,
-      rangeEnd = _ref2$range.end
+  function inEventRange(_ref) {
+    var _ref$event = _ref.event,
+      start = _ref$event.start,
+      end = _ref$event.end,
+      _ref$range = _ref.range,
+      rangeStart = _ref$range.start,
+      rangeEnd = _ref$range.end
     var eStart = startOf(start, 'day')
     var startsBeforeEnd = lte(eStart, rangeEnd, 'day')
     // when the event is zero duration we need to handle a bit differently
@@ -9413,14 +9390,12 @@
     var popperInstanceRef = reactExports.useRef()
     var update = reactExports.useCallback(function () {
       var _popperInstanceRef$cu
-
       ;(_popperInstanceRef$cu = popperInstanceRef.current) == null
         ? void 0
         : _popperInstanceRef$cu.update()
     }, [])
     var forceUpdate = reactExports.useCallback(function () {
       var _popperInstanceRef$cu2
-
       ;(_popperInstanceRef$cu2 = popperInstanceRef.current) == null
         ? void 0
         : _popperInstanceRef$cu2.forceUpdate()
@@ -10277,7 +10252,6 @@
       })()
     }
   })(scheduler_development)
-
   ;(function (module) {
     {
       module.exports = scheduler_development
@@ -10646,7 +10620,6 @@
       })()
     }
   })(schedulerTracing_development)
-
   ;(function (module) {
     {
       module.exports = schedulerTracing_development
@@ -11044,7 +11017,6 @@
         )
       }) // A few React string attributes have a different name.
       // This is a mapping from React prop names to the attribute names.
-
       ;[
         ['acceptCharset', 'accept-charset'],
         ['className', 'class'],
@@ -11065,7 +11037,6 @@
       }) // These are "enumerated" HTML attributes that accept "true" and "false".
       // In React, we let users pass `true` and `false` even though technically
       // these aren't boolean attributes (they are coerced to strings).
-
       ;['contentEditable', 'draggable', 'spellCheck', 'value'].forEach(
         function (name) {
           properties[name] = new PropertyInfoRecord(
@@ -11082,7 +11053,6 @@
       // In React, we let users pass `true` and `false` even though technically
       // these aren't boolean attributes (they are coerced to strings).
       // Since these are SVG attributes, their attribute names are case-sensitive.
-
       ;[
         'autoReverse',
         'externalResourcesRequired',
@@ -11099,7 +11069,6 @@
           false
         )
       }) // These are HTML boolean attributes.
-
       ;[
         'allowFullScreen',
         'async', // Note: there is a special case that prevents it from being written to the DOM
@@ -11137,7 +11106,6 @@
         )
       }) // These are the few React props that we set as DOM properties
       // rather than attributes. These are all booleans.
-
       ;[
         'checked', // Note: `option.selected` is not updated if `select.multiple` is
         // disabled with `removeAttribute`. We have special logic for handling this.
@@ -11158,7 +11126,6 @@
         )
       }) // These are HTML attributes that are "overloaded booleans": they behave like
       // booleans, but can also accept a string value.
-
       ;[
         'capture',
         'download', // NOTE: if you add a camelCased prop to this list,
@@ -11175,7 +11142,6 @@
           false
         )
       }) // These are HTML attributes that must be positive numbers.
-
       ;[
         'cols',
         'rows',
@@ -11194,7 +11160,6 @@
           false
         )
       }) // These are HTML attributes that must be numbers.
-
       ;['rowSpan', 'start'].forEach(function (name) {
         properties[name] = new PropertyInfoRecord(
           name,
@@ -11304,7 +11269,6 @@
           false
         )
       }) // String SVG attributes with the xlink namespace.
-
       ;[
         'xlink:actuate',
         'xlink:arcrole',
@@ -11326,7 +11290,6 @@
           false
         )
       }) // String SVG attributes with the xml namespace.
-
       ;[
         'xml:base',
         'xml:lang',
@@ -11347,7 +11310,6 @@
       }) // These attribute exists both in HTML and SVG.
       // The attribute name is case-sensitive in SVG so we can't just use
       // the React name like we do for attributes that exist only in HTML.
-
       ;['tabIndex', 'crossOrigin'].forEach(function (attributeName) {
         properties[attributeName] = new PropertyInfoRecord(
           attributeName,
@@ -53615,6 +53577,10 @@
     selected: 'onSelectEvent',
   })
 
+  function _objectDestructuringEmpty(obj) {
+    if (obj == null) throw new TypeError('Cannot destructure ' + obj)
+  }
+
   var weekRangeFormat$5 = function weekRangeFormat(_ref, culture, local) {
     var start = _ref.start,
       end = _ref.end
@@ -53937,30 +53903,9 @@
 
     // These two are used by eventLevels
     function sortEvents(_ref6) {
-      var _ref6$evtA = _ref6.evtA,
-        aStart = _ref6$evtA.start,
-        aEnd = _ref6$evtA.end,
-        aAllDay = _ref6$evtA.allDay,
-        _ref6$evtB = _ref6.evtB,
-        bStart = _ref6$evtB.start,
-        bEnd = _ref6$evtB.end,
-        bAllDay = _ref6$evtB.allDay
-      var startSort = +startOf(aStart, 'day') - +startOf(bStart, 'day')
-      var durA = diff(aStart, ceil(aEnd, 'day'), 'day')
-      var durB = diff(bStart, ceil(bEnd, 'day'), 'day')
-      return (
-        startSort ||
-        // sort by start Day first
-        Math.max(durB, 1) - Math.max(durA, 1) ||
-        // events spanning multiple days go first
-        !!bAllDay - !!aAllDay ||
-        // then allDay single day events
-        +aStart - +bStart ||
-        // then sort by start time *don't need moment conversion here
-        +aEnd - +bEnd // then sort by end time *don't need moment conversion here either
-      )
+      _objectDestructuringEmpty(_ref6)
+      return 1
     }
-
     function inEventRange(_ref7) {
       var _ref7$event = _ref7.event,
         start = _ref7$event.start,
@@ -54423,30 +54368,16 @@
 
     // These two are used by eventLevels
     function sortEvents(_ref7) {
-      var _ref7$evtA = _ref7.evtA,
-        aStart = _ref7$evtA.start,
-        aEnd = _ref7$evtA.end,
-        aAllDay = _ref7$evtA.allDay,
-        _ref7$evtB = _ref7.evtB,
-        bStart = _ref7$evtB.start,
-        bEnd = _ref7$evtB.end,
-        bAllDay = _ref7$evtB.allDay
-      var startSort = +startOf(aStart, 'day') - +startOf(bStart, 'day')
-      var durA = diff(aStart, ceil(aEnd, 'day'), 'day')
-      var durB = diff(bStart, ceil(bEnd, 'day'), 'day')
-      return (
-        startSort ||
-        // sort by start Day first
-        Math.max(durB, 1) - Math.max(durA, 1) ||
-        // events spanning multiple days go first
-        !!bAllDay - !!aAllDay ||
-        // then allDay single day events
-        +aStart - +bStart ||
-        // then sort by start time *don't need moment conversion here
-        +aEnd - +bEnd // then sort by end time *don't need moment conversion here either
-      )
+      var _ref7$evtA = _ref7.evtA
+      _ref7$evtA.start
+      _ref7$evtA.end
+      _ref7$evtA.allDay
+      var _ref7$evtB = _ref7.evtB
+      _ref7$evtB.start
+      _ref7$evtB.end
+      _ref7$evtB.allDay
+      return 1
     }
-
     function inEventRange(_ref8) {
       var _ref8$event = _ref8.event,
         start = _ref8$event.start,
@@ -55604,30 +55535,16 @@
 
     // These two are used by eventLevels
     function sortEvents(_ref6) {
-      var _ref6$evtA = _ref6.evtA,
-        aStart = _ref6$evtA.start,
-        aEnd = _ref6$evtA.end,
-        aAllDay = _ref6$evtA.allDay,
-        _ref6$evtB = _ref6.evtB,
-        bStart = _ref6$evtB.start,
-        bEnd = _ref6$evtB.end,
-        bAllDay = _ref6$evtB.allDay
-      var startSort = +startOf(aStart, 'day') - +startOf(bStart, 'day')
-      var durA = diff(aStart, ceil(aEnd, 'day'), 'day')
-      var durB = diff(bStart, ceil(bEnd, 'day'), 'day')
-      return (
-        startSort ||
-        // sort by start Day first
-        Math.max(durB, 1) - Math.max(durA, 1) ||
-        // events spanning multiple days go first
-        !!bAllDay - !!aAllDay ||
-        // then allDay single day events
-        +aStart - +bStart ||
-        // then sort by start time *don't need dayjs conversion here
-        +aEnd - +bEnd // then sort by end time *don't need dayjs conversion here either
-      )
+      var _ref6$evtA = _ref6.evtA
+      _ref6$evtA.start
+      _ref6$evtA.end
+      _ref6$evtA.allDay
+      var _ref6$evtB = _ref6.evtB
+      _ref6$evtB.start
+      _ref6$evtB.end
+      _ref6$evtB.allDay
+      return 1
     }
-
     function inEventRange(_ref7) {
       var _ref7$event = _ref7.event,
         start = _ref7$event.start,

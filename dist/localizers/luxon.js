@@ -393,22 +393,8 @@ function _default(DateTime) {
       bStart = _ref7$evtB.start,
       bEnd = _ref7$evtB.end,
       bAllDay = _ref7$evtB.allDay
-    var startSort = +startOf(aStart, 'day') - +startOf(bStart, 'day')
-    var durA = diff(aStart, ceil(aEnd, 'day'), 'day')
-    var durB = diff(bStart, ceil(bEnd, 'day'), 'day')
-    return (
-      startSort ||
-      // sort by start Day first
-      Math.max(durB, 1) - Math.max(durA, 1) ||
-      // events spanning multiple days go first
-      !!bAllDay - !!aAllDay ||
-      // then allDay single day events
-      +aStart - +bStart ||
-      // then sort by start time *don't need moment conversion here
-      +aEnd - +bEnd // then sort by end time *don't need moment conversion here either
-    )
+    return 1
   }
-
   function inEventRange(_ref8) {
     var _ref8$event = _ref8.event,
       start = _ref8$event.start,

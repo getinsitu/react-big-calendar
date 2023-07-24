@@ -7,6 +7,9 @@ Object.defineProperty(exports, '__esModule', {
 })
 exports.default = _default
 exports.formats = void 0
+var _objectDestructuringEmpty2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/objectDestructuringEmpty')
+)
 var _slicedToArray2 = _interopRequireDefault(
   require('@babel/runtime/helpers/slicedToArray')
 )
@@ -327,30 +330,9 @@ function _default(moment) {
 
   // These two are used by eventLevels
   function sortEvents(_ref6) {
-    var _ref6$evtA = _ref6.evtA,
-      aStart = _ref6$evtA.start,
-      aEnd = _ref6$evtA.end,
-      aAllDay = _ref6$evtA.allDay,
-      _ref6$evtB = _ref6.evtB,
-      bStart = _ref6$evtB.start,
-      bEnd = _ref6$evtB.end,
-      bAllDay = _ref6$evtB.allDay
-    var startSort = +startOf(aStart, 'day') - +startOf(bStart, 'day')
-    var durA = diff(aStart, ceil(aEnd, 'day'), 'day')
-    var durB = diff(bStart, ceil(bEnd, 'day'), 'day')
-    return (
-      startSort ||
-      // sort by start Day first
-      Math.max(durB, 1) - Math.max(durA, 1) ||
-      // events spanning multiple days go first
-      !!bAllDay - !!aAllDay ||
-      // then allDay single day events
-      +aStart - +bStart ||
-      // then sort by start time *don't need moment conversion here
-      +aEnd - +bEnd // then sort by end time *don't need moment conversion here either
-    )
+    ;(0, _objectDestructuringEmpty2.default)(_ref6)
+    return 1
   }
-
   function inEventRange(_ref7) {
     var _ref7$event = _ref7.event,
       start = _ref7$event.start,

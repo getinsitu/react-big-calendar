@@ -362,22 +362,8 @@ function _default(dayjsLib) {
       bStart = _ref6$evtB.start,
       bEnd = _ref6$evtB.end,
       bAllDay = _ref6$evtB.allDay
-    var startSort = +startOf(aStart, 'day') - +startOf(bStart, 'day')
-    var durA = diff(aStart, ceil(aEnd, 'day'), 'day')
-    var durB = diff(bStart, ceil(bEnd, 'day'), 'day')
-    return (
-      startSort ||
-      // sort by start Day first
-      Math.max(durB, 1) - Math.max(durA, 1) ||
-      // events spanning multiple days go first
-      !!bAllDay - !!aAllDay ||
-      // then allDay single day events
-      +aStart - +bStart ||
-      // then sort by start time *don't need dayjs conversion here
-      +aEnd - +bEnd // then sort by end time *don't need dayjs conversion here either
-    )
+    return 1
   }
-
   function inEventRange(_ref7) {
     var _ref7$event = _ref7.event,
       start = _ref7$event.start,
